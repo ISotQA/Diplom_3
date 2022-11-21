@@ -1,5 +1,6 @@
 package site.nomoreparties.stellarburgers.user;
 
+import io.qameta.allure.Step;
 import io.restassured.response.ValidatableResponse;
 import site.nomoreparties.stellarburgers.dto.User;
 
@@ -19,6 +20,7 @@ public class UserClient extends RestClient {
 
     private static String refreshToken;
 
+    @Step("Получение токенов")
     public void getTokens(ValidatableResponse response) {
         if (response.extract().statusCode() == SC_OK) {
             accessToken = response.extract().jsonPath().getString("accessToken").replace("Bearer ", "");
@@ -26,6 +28,7 @@ public class UserClient extends RestClient {
         }
     }
 
+    @Step("Удаление пользователя")
     public ValidatableResponse delete() {
         return given()
                 .spec(getDefaultRequestSpec())
@@ -35,6 +38,7 @@ public class UserClient extends RestClient {
                 .then();
     }
 
+    @Step("Создание пользователя")
     public ValidatableResponse createUser(User user) {
         ValidatableResponse response = given()
                 .spec(getDefaultRequestSpec())
@@ -46,6 +50,7 @@ public class UserClient extends RestClient {
         return response;
     }
 
+    @Step("Авторизация пользователя")
     public ValidatableResponse loginUser(User user) {
         ValidatableResponse response = given()
                 .spec(getDefaultRequestSpec())

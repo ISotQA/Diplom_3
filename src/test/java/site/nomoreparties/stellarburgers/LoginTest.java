@@ -69,7 +69,6 @@ public class LoginTest extends BaseUITest {
     public void userShouldBeAuthorizedLoginButtonTest() {
         open(MAIN_PAGE);
         mainPage.loginButtonClick();
-        assertEquals("Вход", registrationPage.getHeaderInputLoginPageText());
         loginPage.authorizationUser(email, password);
         assertEquals("Оформить заказ", mainPage.getPlaceOrder());
     }
@@ -80,7 +79,6 @@ public class LoginTest extends BaseUITest {
     public void userShouldBeAuthorizedPersonalAreaButtonTest() {
         open(MAIN_PAGE);
         mainPage.personalAreaButtonClick();
-        assertEquals("Вход", registrationPage.getHeaderInputLoginPageText());
         loginPage.authorizationUser(email, password);
         assertEquals("Оформить заказ", mainPage.getPlaceOrder());
     }
@@ -91,7 +89,6 @@ public class LoginTest extends BaseUITest {
     public void userShouldBeAuthorizedRegistrationFormTest() {
         open(REGISTRATION_PAGE);
         registrationPage.inputButtonClick();
-        assertEquals("Вход", registrationPage.getHeaderInputLoginPageText());
         loginPage.authorizationUser(email, password);
         assertEquals("Оформить заказ", mainPage.getPlaceOrder());
     }
@@ -102,7 +99,6 @@ public class LoginTest extends BaseUITest {
     public void userShouldBeAuthorizedPasswordRecoveryFormTest() {
         open(RECOVERY_PASSWORD_PAGE);
         registrationPage.inputButtonClick();
-        assertEquals("Вход", registrationPage.getHeaderInputLoginPageText());
         loginPage.authorizationUser(email, password);
         assertEquals("Оформить заказ", mainPage.getPlaceOrder());
     }

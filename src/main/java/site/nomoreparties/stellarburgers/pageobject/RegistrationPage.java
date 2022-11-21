@@ -1,6 +1,7 @@
 package site.nomoreparties.stellarburgers.pageobject;
 
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selectors.byXpath;
@@ -13,6 +14,7 @@ public class RegistrationPage extends BasePage {
     private SelenideElement headerInputLoginPage = $(byText("Вход"));
     private SelenideElement inputButton = $(byText("Войти"));
 
+    @Step("Регистрация пользователя")
     public void registrationUser(String name, String email, String password) {
         setNameField(name);
         setEmailField(email);
@@ -20,18 +22,22 @@ public class RegistrationPage extends BasePage {
         registrationButtonClick();
     }
 
+    @Step("Выполнение клика по кнопке 'Зарегистрироваться'")
     public void registrationButtonClick() {
         registrationButton.click();
     }
 
+    @Step("Получение сообщения об ошибке при регистрации")
     public String getErrorMessage() {
         return registrationError.getText();
     }
 
+    @Step("Получение текста заголовка")
     public String getHeaderInputLoginPageText() {
         return headerInputLoginPage.getText();
     }
 
+    @Step("Выполнение клика по кнопке 'Войти'")
     public void inputButtonClick() {
         inputButton.click();
     }
